@@ -27,7 +27,20 @@
             transition: all 0.3s ease; /* Yumuşak geçiş efekti */
             z-index: 999;
         }
-    </style>
+
+        .greetings {
+            display: flex; /* Elemanları aynı satıra yerleştirir */
+            justify-content: center; /* Ortalar */
+            align-items: center; /* Dikey hizalama */
+            flex-wrap: nowrap; /* Satır kaymasını engeller */
+            gap: 5px; /* Harfler arasında boşluk */
+        }
+
+        .greetings span {
+            font-size: 24px; /* Harf boyutunu ayarlayın */
+            line-height: 1; /* Dikey hizalamayı düzeltir */
+        }
+        </style>
 
 </head>
 <body>
