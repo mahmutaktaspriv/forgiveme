@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/flowers.png" type="image/x-icon">
+    <title>Flowers</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Scroll çubuklarını gizler */
+            width: 100%;
+            height: 100%;
+        }
+        
+        .button {
+            position: relative;
+            min-height: 200px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="greetings">
+    <!-- silahkan menambah kata sesuai keinginan dengan <span>text...</span -->
+        <span>B</span>
+        <span>A</span>
+        <span>L</span>
+        <span>L</span>
+        <span>I</span>
+        <span>Ç</span>
+        <span>Ö</span>
+        <span>R</span>
+        <span>E</span>
+        <span>K</span>
+    </div>
+    <div class="description">
+        <span><Label>Lütfen beni affet  </Label></span>
+    </div>
+    <div class="button">
+        <button>
+            <a href="flower.html">EVET</a>
+        </button>
+        <button id="noButton">
+            <a>HAYIR</a>
+        </button>
+        
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        
+        noButton.addEventListener('mouseover', function() {
+            // Ekranın görünür kısmının genişliği ve yüksekliği
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = document.documentElement.clientHeight;
+            
+            // Butonun boyutları
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+            
+            // Güvenli bir marj (butonun ekran kenarlarından uzak kalması için)
+            const margin = 50;
+            
+            // Rastgele konum hesaplama (kenarlardan margin kadar içeride)
+            const maxX = viewportWidth - buttonWidth - margin;
+            const maxY = viewportHeight - buttonHeight - margin;
+            
+            // Minimum pozisyon (ekranın sol ve üst tarafından en az margin kadar uzak)
+            const minX = margin;
+            const minY = margin;
+            
+            // Rastgele konumu bu aralıkta belirleme
+            const newX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+            const newY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+            
+            // Butonu taşıma
+            noButton.style.position = 'absolute';
+            noButton.style.left = newX + 'px';
+            noButton.style.top = newY + 'px';
+        });
+    </script>
+</body>
+</html>
