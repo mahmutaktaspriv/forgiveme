@@ -21,12 +21,17 @@
             position: relative;
             min-height: 200px;
         }
+        
+        #noButton {
+            position: absolute;
+            transition: all 0.3s ease; /* Yumuşak geçiş efekti */
+            z-index: 999;
+        }
     </style>
 
 </head>
 <body>
     <div class="greetings">
-    <!-- silahkan menambah kata sesuai keinginan dengan <span>text...</span -->
         <span>B</span>
         <span>A</span>
         <span>L</span>
@@ -48,41 +53,43 @@
         <button id="noButton">
             <a>HAYIR</a>
         </button>
-        
     </div>
 
     <script>
         const noButton = document.getElementById('noButton');
         
-        noButton.addEventListener('mouseover', function() {
-            // Ekranın görünür kısmının genişliği ve yüksekliği
-            const viewportWidth = document.documentElement.clientWidth;
-            const viewportHeight = document.documentElement.clientHeight;
+        function moveButton() {
+            // Ekranın genişliği ve yüksekliği
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
             
             // Butonun boyutları
             const buttonWidth = noButton.offsetWidth;
             const buttonHeight = noButton.offsetHeight;
             
-            // Güvenli bir marj (butonun ekran kenarlarından uzak kalması için)
-            const margin = 50;
+            // Güvenli bir marj
+            const margin = 20;
             
-            // Rastgele konum hesaplama (kenarlardan margin kadar içeride)
+            // Maksimum ve minimum pozisyonlar
             const maxX = viewportWidth - buttonWidth - margin;
             const maxY = viewportHeight - buttonHeight - margin;
-            
-            // Minimum pozisyon (ekranın sol ve üst tarafından en az margin kadar uzak)
             const minX = margin;
             const minY = margin;
             
-            // Rastgele konumu bu aralıkta belirleme
+            // Rastgele pozisyon hesaplama
             const newX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
             const newY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
             
-            // Butonu taşıma
-            noButton.style.position = 'absolute';
-            noButton.style.left = newX + 'px';
-            noButton.style.top = newY + 'px';
-        });
+            // Butonu yeni pozisyona taşıma
+            noButton.style.left = `${newX}px`;
+            noButton.style.top = `${newY}px`;
+        }
+        
+        // Fare butonun üzerine geldiğinde hareket ettir
+        noButton.addEventListener('mouseover', moveButton);
+        
+        // Pencere boyutu değiştiğinde butonun konumunu yeniden ayarla
+        window.addEventListener('resize', moveButton);
     </script>
 </body>
 </html>
